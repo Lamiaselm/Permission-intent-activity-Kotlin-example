@@ -2,8 +2,10 @@ package com.example.doctors
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         list_doc.layoutManager = LinearLayoutManager(this)
         list_doc.adapter = MyAdapter(this,loadData())
+        list_doc.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
     fun loadData():List<Doctor> {
         val data = mutableListOf<Doctor>()

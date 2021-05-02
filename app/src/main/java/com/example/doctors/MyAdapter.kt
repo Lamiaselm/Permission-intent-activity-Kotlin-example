@@ -1,5 +1,6 @@
 package com.example.doctors
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -49,12 +50,33 @@ class MyAdapter (val context: Context, var data:List<Doctor>): RecyclerView.Adap
 
         val doc=data[position]
         holder.doc.setOnClickListener { v->
-            val intent=Intent(context,InfoDoctor::class.java).apply {
-              putExtra("doctor",doc)
+            if(isTwoPane()) {
+                val activity = context as Activity
+                val img = activity.findViewById(R.id.imageView2) as ImageView
+                img.setImageResource(data[position].img)
+                val name = activity.findViewById<TextView>(R.id.textView)
+                name.text=data[position].nom
+                val prenom = activity.findViewById<TextView>(R.id.textView2)
+                prenom.text=data[position].prenom
+                val spec = activity.findViewById<TextView>(R.id.textView3)
+                spec.text=data[position].speciality
+                val num = activity.findViewById<TextView>(R.id.textView4)
+                num.text=data[position].num
 
+
+            }else {
+                val intent=Intent(context,InfoDoctor::class.java).apply {
+                    putExtra("doctor",doc)
+
+                }
+                context.startActivity(intent)
             }
-            context.startActivity(intent)
+
         }
+    }
+    private fun isTwoPane():Boolean{
+        val activity = context as Activity
+        return activity.findViewById<View>(R.id.fragment2)!=null
     }
 
 }
