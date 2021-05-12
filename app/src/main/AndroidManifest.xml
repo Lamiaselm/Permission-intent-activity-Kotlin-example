@@ -17,10 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Doctors">
-        <activity
-            android:name=".InfoDoctor"
-            android:label="@string/title_activity_info_doctor">
-        </activity>
+
 
 
         <!--
