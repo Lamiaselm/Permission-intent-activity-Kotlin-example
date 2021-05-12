@@ -83,11 +83,11 @@ class MyAdapter (val context: Context, var data:List<Doctor>): RecyclerView.Adap
 
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val nom= view.findViewById<TextView>(R.id.textViewNom) as TextView
-    val prenom= view.findViewById<TextView>(R.id.textViewPrenom) as TextView
-    val num= view.findViewById<TextView>(R.id.textViewNum) as TextView
-    val spec= view.findViewById<TextView>(R.id.textViewSpecialite) as TextView
-    val img= view.findViewById<ImageView>(R.id.imageView) as ImageView
-    val location =view.findViewById<ImageView>(R.id.loc) as ImageView
+    val nom= view.findViewById<TextView>(R.id.textViewNom)
+    val prenom= view.findViewById<TextView>(R.id.textViewPrenom)
+    val num= view.findViewById<TextView>(R.id.textViewNum)
+    val spec= view.findViewById<TextView>(R.id.textViewSpecialite)
+    val img= view.findViewById<ImageView>(R.id.imageView)
+    val location =view.findViewById<ImageView>(R.id.loc)
     val doc=view.findViewById<ConstraintLayout>(R.id.doc)
 }
