@@ -15,11 +15,11 @@ class InfoDoctor : AppCompatActivity() {
 
         val doc=intent.getSerializableExtra("doctor") as Doctor
 
-        val img= findViewById<ImageView>(R.id.imageView2) as ImageView
-        val nom=findViewById<TextView>(R.id.textView) as TextView
-        val prenom =findViewById<TextView>(R.id.textView2) as TextView
-        val specialite=findViewById<TextView>(R.id.textView3) as TextView
-        val num=findViewById<TextView>(R.id.textView4) as TextView
+        val img= findViewById<ImageView>(R.id.imageView2)
+        val nom=findViewById<TextView>(R.id.textView)
+        val prenom =findViewById<TextView>(R.id.textView2)
+        val specialite=findViewById<TextView>(R.id.textView3)
+        val num=findViewById<TextView>(R.id.textView4)
 
         nom.text=doc.nom
         prenom.text=doc.prenom
