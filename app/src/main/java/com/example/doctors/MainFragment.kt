@@ -26,7 +26,6 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val vm = ViewModelProvider(this).get(DocViewModel::class.java)
         list_doc.apply {
             list_doc.layoutManager = LinearLayoutManager(activity)
             list_doc.adapter = MyAdapter(context,loadData())
