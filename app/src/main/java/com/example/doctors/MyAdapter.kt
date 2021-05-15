@@ -11,6 +11,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 
@@ -47,39 +50,27 @@ class MyAdapter (val context: Context, var data:List<Doctor>): RecyclerView.Adap
             context.startActivity(intent)
         }
         //SHOW DOCTOR PROFILE FUNCTION
+       // val vm = ViewModelProvider(context).get(DocViewModel::class.java)
 
         val doc=data[position]
-        holder.doc.setOnClickListener { v->
-            if(isTwoPane()) {
-                val activity = context as Activity
-                val img = activity.findViewById(R.id.imageView2) as ImageView
-                img.setImageResource(data[position].img)
-                val name = activity.findViewById<TextView>(R.id.textView)
-                name.text=data[position].nom
-                val prenom = activity.findViewById<TextView>(R.id.textView2)
-                prenom.text=data[position].prenom
-                val spec = activity.findViewById<TextView>(R.id.textView3)
-                spec.text=data[position].speciality
-                val num = activity.findViewById<TextView>(R.id.textView4)
-                num.text=data[position].num
+        holder.doc.setOnClickListener { view->
+                    val  nom=data[position].nom
+                    val  prenom=data[position].prenom
+                    val  num=data[position].num
+                    val  spec=data[position].speciality
+                    val  img=data[position].img
+                    val bundle = bundleOf("nom" to nom,"prenom" to prenom,"num" to num, "spec" to spec, "img" to img)
+                    view?.findNavController()?.navigate(R.id.action_mainFragment_to_detailFragment,bundle)
 
 
-            }else {
-                val intent=Intent(context,InfoDoctor::class.java).apply {
-                    putExtra("doctor",doc)
 
-                }
-                context.startActivity(intent)
             }
 
         }
     }
-    private fun isTwoPane():Boolean{
-        val activity = context as Activity
-        return activity.findViewById<View>(R.id.fragment2)!=null
-    }
 
-}
+
+
 
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
