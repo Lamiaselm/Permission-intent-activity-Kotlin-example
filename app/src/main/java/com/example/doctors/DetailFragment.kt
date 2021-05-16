@@ -42,6 +42,7 @@ class DetailFragment : Fragment() {
         }
          //CALL  PHONE NUMBER FUNCTION
       val num = arguments?.getString("num")
+
          textView4.setOnClickListener { view ->
 
              val uri = Uri.parse("tel:"+num)
