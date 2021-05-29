@@ -38,14 +38,19 @@ class MainFragment : Fragment() {
         }
         val call =RetrofitService.doctorInterface.getDoctors()
         call.enqueue(object:Callback<List<Doctor>>{
-            override fun onFailure(call: Call<List<Doctor>>, t: Throwable) {
+
+
+            override fun onResponse(call: Call<List<Doctor>>, response: Response<List<Doctor>>) {
                 Toast.makeText(context,"YAY IT WORKED",Toast.LENGTH_SHORT).show()
 
             }
 
-            override fun onResponse(call: Call<List<Doctor>>, response: Response<List<Doctor>>) {
+            override fun onFailure(call: Call<List<Doctor>>, t: Throwable) {
                 Toast.makeText(context,"ERREUR DE RECUPERATION DE DONNÉES",Toast.LENGTH_SHORT).show()
+
             }
+
+
 
         })
 
