@@ -34,9 +34,6 @@ class DetailFragment : Fragment() {
         textView3.text = arguments?.getString("spec")
         val img= arguments?.getInt("img")
 
-
-
-
         if (img != null) {
             imageView2.setImageResource(img)
         }

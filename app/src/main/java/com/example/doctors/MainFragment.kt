@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainFragment : Fragment() {
@@ -32,6 +36,18 @@ class MainFragment : Fragment() {
             list_doc.adapter = MyAdapter(context,loadData())
             list_doc.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
+        val call =RetrofitService.doctorInterface.getDoctors()
+        call.enqueue(object:Callback<List<Doctor>>{
+            override fun onFailure(call: Call<List<Doctor>>, t: Throwable) {
+                Toast.makeText(context,"YAY IT WORKED",Toast.LENGTH_SHORT).show()
+
+            }
+
+            override fun onResponse(call: Call<List<Doctor>>, response: Response<List<Doctor>>) {
+                Toast.makeText(context,"ERREUR DE RECUPERATION DE DONNÉES",Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
     }
